@@ -366,7 +366,7 @@ class BaseGraph:
         """
         with self.driver.session() as session:
             session.run("""\
-            CREATE CONSTRAINT ON (c:Character) ASSERT c.name IS UNIQUE;
+            CREATE CONSTRAINT FOR (c:Character) REQUIRE c.name IS UNIQUE;
             """)
 
             session.run("""\
@@ -406,7 +406,7 @@ class BaseGraph:
             """)
         with self.driver.session() as session:
             session.run("""\
-            DROP CONSTRAINT ON (c:Character) ASSERT c.name IS UNIQUE;
+            DROP CONSTRAINT FOR (c:Character) REQUIRE c.name IS UNIQUE;
             """)
 
     def load_euroads(self):
